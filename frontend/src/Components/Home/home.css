@@ -1,0 +1,91 @@
+/* homepage.css */
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .homepage {
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* First Row */
+  .first-row {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .big-image {
+    width: 100%;
+    max-height: 400px; /* Adjust height as needed */
+    object-fit: cover;
+  }
+  
+  /* Second Row */
+  .second-row {
+    display: flex;
+    align-items: center;
+    margin: 40px;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(105, 16, 16);
+  }
+  
+  .icon {
+    width: 50px; /* Adjust size as needed */
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  /* Third Row */
+  .third-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .column {
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  /* Event Card */
+  .event-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .event-photo {
+    width: 100%;
+    max-height: 200px; /* Adjust height as needed */
+    object-fit: cover;
+  }
+  
+  .event-details {
+    padding: 10px;
+  }
+  
+  .event-name {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .event-location,
+  .event-opening-time,
+  .event-events {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .icon {
+    width: 20px; /* Adjust size as needed */
+    height: auto;
+    margin-right: 5px;
+  }
+  
