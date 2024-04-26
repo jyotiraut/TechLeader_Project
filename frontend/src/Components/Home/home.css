@@ -36,7 +36,11 @@ body {
   }
   
   .icon {
-    width: 50px; /* Adjust size as needed */
+    
+    margin-right: 10px;
+  }
+  .second-row .icon {
+    width: 40px; /* Adjust size as needed */
     height: auto;
     margin-right: 10px;
   }

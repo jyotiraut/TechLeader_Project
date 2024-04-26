@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './navbar.css' // If using React Router
+import './navbar.css'
+import logo1 from "./logo1.jpg" // If using React Router
 
 function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
         <Link to="/">
-          <img src="/favicon.svg" className="logo" alt="" />
+          <img src={logo1} className="logo" alt="" />
           <span className="brand-name">Tradition Keepers</span>
         </Link>
       </div>

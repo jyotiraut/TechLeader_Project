@@ -28,4 +28,8 @@
   .contact-info p {
     margin: 5px 0;
   }
+  .social-icons a{
+    justify-content: space-between;
+    margin-left: 20px;
+  }
   
