@@ -1,64 +1,91 @@
-import User from '../models/userModels.js'
-import bcrypt from "bcrypt"
+import User from "../models/userModels.js";
+import bcrypt from "bcrypt";
+import generateTokenSetCookie from "../utils/generateToken.js";
 
-//user registration
-const registerUser= async(req,res)=>{
-    try{
-        const {username,email,password,confirmPassword} = req.body;
+const signupUser = async (req, res) => {
+    try {
+        const { firstName, lastName, email, password, confirmPassword, type, organizationName } = req.body;
         console.log(req.body);
 
-        const existingUser = await User.findOne({email:email});
-        if(existingUser){
-            res.status(400).json({error:"User already exist"})
+        if (password !== confirmPassword) {
+            return res.status(400).json({ message: "Passwords do not match" });
         }
 
-        const hashedPassword = await bcrypt.hash(password,10);
-        if(password!= confirmPassword){
-            res.status(401).json({error:"password and Confirm password doesnot match"});
+        const existingUser = await User.findOne({ email });
+
+        if (existingUser) {
+            return res.status(400).json({ message: "User already exists" });
         }
 
-        const user = new User({
-            username,
+        const hashedPassword = await bcrypt.hash(password, 12);
+
+        const newUser = new User({
+            firstName,
+            lastName,
             email,
-            password : hashedPassword,
-            confirmPassword
-        })
+            password: hashedPassword,
+            type,
+            organizationName
+        });
 
-        
-        await user.save();
-        res.status(201).json({message:"User registered successfully"});
+        generateTokenSetCookie(newUser._id,res);
+        await newUser.save();
+
+        res.status(200).json({
+          "message": "User created successfully",
+            _id: newUser._id,
+            firstName: newUser.firstName,
+            lastName: newUser.lastName,
+            email: newUser.email,
+            type: newUser.type,
+            organizationName: newUser.organizationName,
+               
+              
+            });
+          } catch (error) {
+            console.error(error.message);
+            res.status(500).json({ message: "Internal server error", error: error.message });
     }
-    catch(error){
-        res.status(500).json({message:"Failed to register user"});
-    }
-    
-}
+};
 
-
-
-//User login
-
-const loginUser = async(req,res)=>{
-    try{
-    const {email,password} = req.body;
-    if(!email){
-        res.status(401).json({error:"Email is required"});
-    }
-
-    const user = await User.findOne({email:email})
+const loginUser =  async (req, res) => {
+   try{
+    const {email,password} = req.body
+    const user = await User.findOne({email})
     if(!user){
-        res.status(400).json({error:"User doesnot exist"});
+        return res.status(400).json({message:"Invalid email or password"})
     }
 
-    const validPassword = bcrypt.compareSync(password,user.password);
-    if(!validPassword){
-        res.status(401).json({error:"Invalid email or password"});
+    const isPasswordCorrect = await bcrypt.compare(password,user.password)
+    if(!isPasswordCorrect){
+        return res.status(400).json({message:"Invalid email or password"})
     }
-    res.status(200).json({error:"User Login sucessfully"});
 
-}catch(error){
-     res.status(400).json({error:"Login failed"});
-}
+    generateTokenSetCookie(user._id,res)
+    res.status(200).json({
+        message:"Login successful",
+        _id : user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email : user.email,
+        type: user.type,
+        organizationName: user.organizationName,
+        token : user.token 
+    });
+   }catch(error){
+    res.status(500).json({message:"Internal server error",error:error.message})
+   }
+};
+
+const logoutUser = async (req,res)=>{
+    try{
+        res.cookie("jwt","",{maxAge:0})
+        res.status(200).json({message:"User logout successfully"})
+
+    }catch(error){
+        console.log(error.message)
+        res.status(500).json({message:"Internal server error",error:error.message})
+    }
 }
 
-export {registerUser,loginUser};
+export { signupUser, loginUser, logoutUser };
