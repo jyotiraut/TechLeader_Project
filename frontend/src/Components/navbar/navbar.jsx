@@ -13,10 +13,10 @@ function Navbar() {
         
       </div>
       <div className="navbar-menu">
-        <Link to="#" className="navbar-item ">Home</Link>
+        <Link to="/" className="navbar-item ">Home</Link>
         <Link to="#" className="navbar-item">About</Link>
         <Link to="#" className="navbar-item">Places</Link>
-        <Link to="#" className="navbar-item signin-btn">Sign-In</Link>
+        <Link to="/login" className="navbar-item signin-btn">Sign-In</Link>
       </div>
     </nav>
   );

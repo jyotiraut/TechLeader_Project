@@ -3,10 +3,15 @@ import mongoose from 'mongoose';
 const userSchema = mongoose.Schema({
     firstName: {
         type: String,
-        required: true
+        required: function() {
+            return this.accountType === 'individual';
+        }
     },
     lastName: {
-        type: String
+        type: String,
+        required: function() {
+            return this.accountType === 'individual';
+        }
     },
     email: {
         type: String,
@@ -17,7 +22,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, "Please enter your password"]
     },
-    type: {
+    accountType: {
         type: String,
         enum: ['individual', 'organization'],
         required: true
@@ -25,11 +30,10 @@ const userSchema = mongoose.Schema({
     organizationName: {
         type: String,
         required: function() {
-            return this.type === 'organization';
+            return this.accountType === 'organization';
         }
     }
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema); 
 export default User;
-
