@@ -3,17 +3,24 @@ import React from 'react'
 import Homepage from './Components/Home/home';
 import  Navbar from './Components/navbar/navbar';
 import Footer from './Components/common/footer/footer';
-
-
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './Components/login/login';
+import SignUp from './Components/signup/signUp';
+import{Toaster } from 'react-hot-toast';
+import { BrowserRouter , Route, Routes } from 'react-router-dom';
 
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Navbar />
-      <Homepage />
+      <Routes>
+        <Route path='/' element={<Homepage />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
       <Footer />
-    </Router>
+      <Toaster />
+    </BrowserRouter>
+    
   )
 }
 

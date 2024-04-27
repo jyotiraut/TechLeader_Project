@@ -1,0 +1,21 @@
+/* CSS Styles for TypeCheckbox component */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+.label-text {
+    margin-left: 5px; /* Adjust margin as needed */
+    font-size: 1rem; /* Adjust font size as needed */
+    color: #4b5563; /* Adjust text color as needed */
+}
+
+.checkbox {
+    width: 20px; /* Adjust width as needed */
+    height: 20px; /* Adjust height as needed */
+    margin-right: 5px; /* Adjust margin as needed */
+}
+
+.organization-label {
+    margin-left: 10px; /* Adjust margin as needed */
+}
