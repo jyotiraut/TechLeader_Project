@@ -158,10 +158,11 @@ const SignUp = () => {
                         Sign Up
                     </button>
                 </form>
-
+<div className="otheroption">
                 <Link to="/login" className="link-login mt-4 block text-center">
                     Already have an account? Log In
                 </Link>
+                </div>
             </div>
         </div>
     );

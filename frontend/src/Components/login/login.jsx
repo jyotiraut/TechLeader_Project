@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useLogin from "../hooks/useLogin";
-
+import './login.css';
 const Login = () => {
     const navigate = useNavigate();
     const [credentials, setCredentials] = useState({
@@ -15,6 +15,7 @@ const Login = () => {
         e.preventDefault();
         await login(credentials);
         // Redirect to homepage after successful login
+        
         navigate('/');
     };
 
@@ -26,8 +27,9 @@ const Login = () => {
                 </h1>
 
                 <form className='login-form' onSubmit={handleSubmit}>
-                    <div>
+                    <div >
                         <input
+                        className = "input field"
                             type='email'
                             placeholder='Email'
                             value={credentials.email}
@@ -37,6 +39,7 @@ const Login = () => {
 
                     <div>
                         <input
+                        className = "input field"
                             type='password'
                             placeholder='Password'
                             value={credentials.password}
@@ -49,7 +52,8 @@ const Login = () => {
                     </div>
                 </form>
 
-                <Link to={'/signup'} className='link-signup'>Don't have an account? Sign Up</Link>
+                 <div className="otheroption"><Link to={'/signup'} className='link-signup'>Don't have an account? Sign Up</Link>
+                 </div>
             </div>
         </div>
     );
