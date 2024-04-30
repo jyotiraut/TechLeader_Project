@@ -57,9 +57,20 @@
     border-radius: 5px; /* Adjust as needed */
     transition: background-color 0.3s ease; /* Smooth transition */
         }
+        .event-btn {
+          background-color: rgb(16, 241, 16); /* Brown color */
+          color: #fff; /* White text */
+          border: none;
+          padding: 0.5rem 1rem;
+          border-radius: 5px; /* Adjust as needed */
+          transition: background-color 0.3s ease; /* Smooth transition */
+              }
 
     .signin-btn:hover {
     background-color: #A0522D; /* Darker brown on hover */
     }
+    .event-btn:hover {
+      background-color: #32CD32; /* Darker brown on hover */
+      }
 
 }

@@ -7,15 +7,14 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        
-          <img src={logo1} className="logo" alt="" />
-          <span className="brand-name">Tradition Keepers</span>
-        
+        <img src={logo1} className="logo" alt="" />
+        <span className="brand-name">Tradition Keepers</span>
       </div>
       <div className="navbar-menu">
-        <Link to="/" className="navbar-item ">Home</Link>
+        <Link to="/" className="navbar-item">Home</Link>
         <Link to="#" className="navbar-item">About</Link>
-        <Link to="#" className="navbar-item">Places</Link>
+        <Link to="#" className="navbar-item">History</Link>
+        <Link to="/add-event" className="navbar-item event-btn" >Add Event</Link>
         <Link to="/login" className="navbar-item signin-btn">Sign-In</Link>
       </div>
     </nav>
