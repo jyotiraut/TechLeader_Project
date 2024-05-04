@@ -7,15 +7,17 @@ const createEvent = async (req, res) => {
     const { title, description, location, date } = req.body;
     const image = req.file ? req.file.path : ""; // Check if file exists in request object
      
-    console.log(req.file);
+    console.log('this is ',image.replace(/\\/g, '/'));
     // Create a new event
     const event = new Event({
       title,
       description,
       location,
       date,
-      image
+      image: image.replace(/\\/g, '/').replace(/^public\//, '')
     });
+    console.log('this is ',image )
+
 
     // Save the event to the database
     const savedEvent = await event.save();
@@ -26,6 +28,8 @@ const createEvent = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+        
 
 
 

@@ -1,34 +1,40 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import './home.css';
-import img1 from "./temple1.jpg"
+import img1 from "./Mandir1.jpg"
 import icon2 from "./icon2.jpg"
 import photo1 from "./temple1.jpg"
-// Card component for each event
 
-function EventCard({ image, title, description, location, Time }) {
+function EventCard({ image, title, description, location, date }) {
+  const [expanded, setExpanded] = useState(false);
+
+  // Format the date
+  const formattedDate = new Date(date).toLocaleDateString();
+  console.log("this is ", image)
+
+  const imagePath = `http://localhost:3000/${image}`;
+
+
+
   return (
-    <div className="event-card">
-      <img src={photo} alt={title} className="event-photo" />
-      <div className="event-details">
-        <h3 className="event-name">{title}</h3>
+    <div className="event-card" onClick={() => setExpanded(!expanded)}>
+      <img src={imagePath} alt={title} className="event-photo" />
+      <div className={`event-details ${expanded ? 'expanded' : ''}`}>
+        <h3 className="event-name"><strong>Title:</strong>{title}</h3>
         <div className="event-description">
-          <span>{description}</span>
+          <span> <strong>Description:</strong>{description}</span>
         </div>
         <div className="event-location">
-          <span>{location}</span>
+          <span><strong>Location:</strong>{location}</span>
         </div>
-        <div className="event-time">
-          <span>{Time}</span>
+        <div className="event-date">
+          <span><strong>Date:</strong>{formattedDate}</span>
         </div>
-        
       </div>
     </div>
   );
 }
 
-// Homepage component
-
-      function Homepage() {
+function Homepage() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -37,7 +43,8 @@ function EventCard({ image, title, description, location, Time }) {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/events/allevents");
+      const response = await fetch("http://localhost:3000/api/v1/events/allevents");
+      
       if (!response.ok) {
         throw new Error("Failed to fetch events");
       }
@@ -48,6 +55,7 @@ function EventCard({ image, title, description, location, Time }) {
     }
   };
 
+
   return (
     <div className="homepage">
       {/* First Row */}
@@ -56,20 +64,20 @@ function EventCard({ image, title, description, location, Time }) {
       </div>
       {/* Second Row */}
       <div className="second-row">
-        <img src={icon2}  className="icon" />
+        <img src={icon2} className="icon" />
         <span>Cultural Events</span>
       </div>
 
       <div className="third-row">
+      
         {events.map(event => (
           <div className="column" key={event.id}>
             <EventCard
-              image={event.image}
+                image={event.image}
               title={event.title}
               description={event.description}
               location={event.location}
-              Time={event.Time}
-              
+              date={event.date}
             />
           </div>
         ))}
@@ -79,4 +87,3 @@ function EventCard({ image, title, description, location, Time }) {
 }
 
 export default Homepage;
-

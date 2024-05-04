@@ -38,18 +38,24 @@ const AddEvent = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    // const handleImageChange = (e) => {
+    //     const file = e.target.files[0]; // Get the first file selected by the user
+    //     const reader = new FileReader();
+
+    //     reader.onloadend = () => {
+    //         setFormData({ ...formData, image: reader.result });
+    //     };
+
+    //     if (file) {
+    //         reader.readAsDataURL(file); // Read the file as a data URL
+    //     }
+
+    // };
     const handleImageChange = (e) => {
         const file = e.target.files[0]; // Get the first file selected by the user
-        const reader = new FileReader();
-
-        reader.onloadend = () => {
-            setFormData({ ...formData, image: reader.result });
-        };
-
-        if (file) {
-            reader.readAsDataURL(file); // Read the file as a data URL
-        }
-    };
+    
+        setFormData({ ...formData, image: file });
+      };
 
     return (
         <div className="signup-container">
