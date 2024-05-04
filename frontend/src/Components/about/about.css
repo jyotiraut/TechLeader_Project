@@ -1,0 +1,39 @@
+.about-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .about-heading {
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(90, 13, 13); /* Setting the text color to red */
+    margin-bottom: 30px;
+  }
+  
+  .about-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .about-image {
+    margin-right: 15px;
+  }
+  
+  .about-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .about-text {
+    width: 50%; /* Adjust this width as needed */
+    justify-content: space-between;
+  }
+  
+  .about-text p {
+    color: rgb(129, 45, 45); /* Setting the text color to red */
+  }

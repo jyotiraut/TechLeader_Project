@@ -1,0 +1,37 @@
+.history-container {
+    margin: 2in;
+  }
+  
+  .history-heading {
+    font-size: 2cm;
+    margin-bottom: 2cm;
+  }
+  
+  .history-content {
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.8;
+  }
+  
+  .history-image img {
+    max-width: 90%;
+    height: auto;
+  }
+  
+  .history-description {
+    width: 50%;
+  }
+  
+  .history-section {
+    margin-top: 2cm;
+  }
+  
+  .history-subheading {
+    font-size: 1.5cm;
+    margin-bottom: 1.8cm;
+  }
+  
+  .history-paragraph {
+    text-align: justify;
+    line-height: 1.8;
+  }

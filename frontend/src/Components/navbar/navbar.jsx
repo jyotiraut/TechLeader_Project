@@ -12,8 +12,8 @@ function Navbar() {
       </div>
       <div className="navbar-menu">
         <Link to="/" className="navbar-item">Home</Link>
-        <Link to="#" className="navbar-item">About</Link>
-        <Link to="#" className="navbar-item">History</Link>
+        <Link to="/about" className="navbar-item">About</Link>
+        <Link to="/history" className="navbar-item">History</Link>
         <Link to="/add-event" className="navbar-item event-btn" >Add Event</Link>
         <Link to="/login" className="navbar-item signin-btn">Sign-In</Link>
       </div>

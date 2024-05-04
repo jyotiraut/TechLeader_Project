@@ -6,6 +6,8 @@ import Footer from './Components/common/footer/footer';
 import Login from './Components/login/login';
 import SignUp from './Components/signup/signUp';
 import AddEvent from './Components/event/event';
+import About from './Components/about/about';
+import History from './Components/history/history';
 import{Toaster } from 'react-hot-toast';
 import { BrowserRouter , Route, Routes } from 'react-router-dom';
 
@@ -18,6 +20,9 @@ const App = () => {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
         <Route path='/add-event' element={<AddEvent />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/history' element={<History/>}/>
+
       </Routes>
       <Footer />
       <Toaster />
