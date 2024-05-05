@@ -1,35 +1,58 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './history.css';
+
 
 const History = () => {
   return (
     <div className="history-container">
-      <div className="history-heading">Indrayani Temple</div>
-      <div className="history-content">
-        <div className="history-image">
-          <img src="/src/Components/Home/temple1.jpg" alt="Indraynai Temple" />
-        </div>
-        <div className="history-description">
+      <div className="heading">
+        <img src="/src/Components/Home/icon2.jpg" alt="Places" />
+        <h1>Cultural Places</h1>
+      </div>
+      <div className="cards-container">
+        <div className="card">
+          <img src="/src/Components/history/indrayani.jpg" alt="Indrayani Temple"/>
+          <div className="text">
           <p>
             <strong>Name:</strong> Indrayani Temple <br />
             <strong>Alternative names:</strong> Lhuti Maru Ajima Temple, Indrani Temple, Lunti Ajima, Luntimaru <br />
             <strong>Location:</strong> P873+H2J, Kathmandu 44600 <br />
             <strong>Time:</strong> Open 24 hours <br />
-            <strong>Details:</strong> Shaktism Temple, partially damaged 2015 by earthquake. Three Roof Temple (Pagoda Style) of Indrayani (Astra Matrika). Ajima means "grandmother" and represent a group of Mother Goddesses.<br/>
           </p>
+          </div>
+          <Link to="/Indrayani_History"> {/* Link to indrayani_History */}
+            <button className="read-more-btn">Read more</button>
+          </Link>
         </div>
-      </div>
-      <div className="history-section">
-        <div className="history-subheading">History of Indrayani Temple</div>
-        <p className="history-paragraph">
-          The Indrayani Jatra, a once vibrant festival in Kathmandu, Nepal, has gradually faded away over the past decades, leaving behind only stories and memories. Traditions like raising a 48-feet ceremonial pole and rituals like Aju Aji Dya and Paa Pi Wonegu have vanished, lost to time. <br /><br />
+        <div className="card">
+          <img src="/src/Components/history/kanyamandir.jpg" alt="Kanya Mandir"/>
+          <div className="text">
+            <p>
+              <strong>Name:</strong> Kanya Mandir <br />
+              <strong>Address:</strong> Kanya Ladies School, Gangalal Marg, Kathmandu 44600 <br />
+              <strong>Opening hours:</strong> 10 AM - 4 PM (Closed on Saturday) <br />
+              <strong>Established date:</strong> 14th of Chaitra 2003 BS (27th March, 1947 AD) <br />
+            </p>
+          </div>
+          <Link to="/KanyaMandir_History">
+            <button className="read-more-btn">Read more</button>
+          </Link>
+        </div>
+        <div className="card">
+          <img src="/src/Components/history/thahitiChowk.jpg" alt="Thaythi" />
+          <div className="text">
+            <p>
+              <strong>Name:</strong> Thahity <br />
+              <strong>Address:</strong> Thahity, Kathmandu 44600 <br />
+              <strong>Opening hours:</strong> Open 24 hours <br />
+            </p>
+          </div>
+          <Link to="/Thahity_History">
+            <button className="read-more-btn">Read more</button>
+          </Link>
+        </div>
 
-          The festival is rooted in the story of Goddess Indrayani, who was mistreated by her family but later became wealthy through a magical pot of gold. She then held her own celebration, distancing herself from her family's extravagance. <br /><br />
-
-          Historically, the festival was grander, but today it struggles to maintain its traditions. Many rituals, like the snake oblation and the procession with Indrayani's idol, have seen visible changes or losses. The decline is attributed to factors like the disappearance of fields where ritual items were sourced, lack of public interest, and a change in lifestyle leading to fewer people participating. <br /><br />
-
-          Efforts to preserve the festival face challenges, including a lack of knowledge passed down from elders and a dwindling number of locals involved in organizing and participating. The festival's importance seems to be diminishing in the eyes of some, as changing priorities and lifestyles take precedence.
-        </p>
       </div>
     </div>
   );
