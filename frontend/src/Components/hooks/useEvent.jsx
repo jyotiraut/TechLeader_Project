@@ -14,12 +14,19 @@ const useEvent = () => {
         try {
             // Your code to add an event goes here
             // // Replace this with your actual API call or database operation
+            const formdata = new FormData();
+            formdata.append("title", title);
+            formdata.append("description", description);
+            formdata.append("image", image);
+            formdata.append("date", date);
+            formdata.append("location", location);
+
             const res = await fetch("http://localhost:3000/api/v1/events/create", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ title, description, image, date, location }),
+                // headers: {
+                //     "Content-Type": "multipart/form-data"
+                // },
+                body: formdata
             });
             const data = await res.json();
             if (data.error) {

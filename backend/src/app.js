@@ -3,7 +3,9 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
+import path from 'path';
 dotenv.config({ path: "./.env" });
+
 
 import database from './db/database.js';
 import userRouter from './routes/userRoutes.js';
@@ -15,7 +17,8 @@ const app = express();
 
 app.use(express.json({ limit: "16kb" }));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static("./public"));
+
 app.use(cookieParser())
 
 

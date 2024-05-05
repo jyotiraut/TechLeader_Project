@@ -1,6 +1,6 @@
 import express from 'express';
 import { createEvent, getEvents, getEventsByDate } from '../controllers/eventControllers.js';
-import uploadImage from '../middlewares/multerMiddlewares.js';
+import uploadImage  from '../middlewares/multerMiddlewares.js';
 
 const router = express.Router();
 

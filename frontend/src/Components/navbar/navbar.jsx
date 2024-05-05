@@ -16,6 +16,7 @@ function Navbar() {
         <Link to="/history" className="navbar-item">History</Link>
         <Link to="/add-event" className="navbar-item event-btn" >Add Event</Link>
         <Link to="/login" className="navbar-item signin-btn">Sign-In</Link>
+        
       </div>
     </nav>
   );
