@@ -12,9 +12,7 @@ import KanyaMandir_History from './Components/history/kanyamandir_history';
 import Thahity_History from './Components/history/thahity_history';
 import{Toaster } from 'react-hot-toast';
 import { BrowserRouter , Route, Routes } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ProtectedRoute from './Components/context/protectedRoutes.jsx';
+
 
 const App = () => {
   return (

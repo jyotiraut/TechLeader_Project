@@ -54,6 +54,7 @@ function Homepage() {
       console.error("Error fetching events:", error);
     }
   };
+  
 
 
   return (
