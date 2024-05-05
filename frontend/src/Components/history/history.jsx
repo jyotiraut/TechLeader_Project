@@ -12,7 +12,7 @@ const History = () => {
       </div>
       <div className="cards-container">
         <div className="card">
-          <img src="/src/Components/history/indrayani.jpg" alt="Indrayani Temple"/>
+          <img src="/src/Components/history/picind2.jpg" alt="Indrayani Temple"/>
           <div className="text">
           <p>
             <strong>Name:</strong> Indrayani Temple <br />

@@ -7,7 +7,7 @@ const Indrayani_History = () => {
       <div className="history-heading">Indrayani Temple</div>
       <div className="history-content">
         <div className="history-image">
-          <img src="/src/Components/history/indrayani.jpg" alt="Indrayani Temple"/>
+          <img src="/src/Components/history/picind2.jpg" alt="Indrayani Temple"/>
         </div>
         <div className="history-description">
           <p>
