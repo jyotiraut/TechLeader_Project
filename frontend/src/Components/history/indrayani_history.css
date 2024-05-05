@@ -1,0 +1,44 @@
+.history-container {
+    margin: 2.5in;
+    margin-top: 1cm;
+
+  }
+  
+  .history-heading {
+    font-size:xxx-large;
+    margin-bottom: 1.5cm;
+    text-align: center;
+    color: rgb(145, 18, 18);
+
+  }
+  
+  .history-content {
+    display: flex;
+    justify-content: space-between;
+    line-height: 2;
+  }
+  
+  .history-image img {
+    max-width: 60%;
+    height:fit-content;
+  }
+  
+  .history-description {
+    width: 70%;
+  }
+  
+  .history-section {
+    margin-top: 1.5cm;
+  }
+  
+  .history-subheading {
+    font-size:xx-large;
+    margin-bottom: 0.5cm;
+    color: rgb(145, 18, 18);
+
+  }
+  
+  .history-paragraph {
+    text-align: justify;
+    line-height: 1.8;
+  }
