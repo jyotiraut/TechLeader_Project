@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import './home.css';
 import img1 from "./Mandir1.jpg"
 import icon2 from "./icon2.jpg"
@@ -7,18 +8,29 @@ import photo1 from "./temple1.jpg"
 // Import FontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { set } from "mongoose";
 
 function EventCard({ image, title, description, location, date }) {
   const [expanded, setExpanded] = useState(false);
+  const [showVolunteerForm, setShowVolunteerForm] = useState(false);
+
+  const toggleExpanded = () => {
+    setExpanded(!expanded);
+    setShowVolunteerForm(false);
+  }
+
+  const toggleVolunteerForm = (e) => {
+    e.stopPropagation();
+    setShowVolunteerForm(!showVolunteerForm);
+  }
 
   // Format the date
   const formattedDate = new Date(date).toLocaleDateString();
-  console.log("this is ", image)
 
   const imagePath = `http://localhost:3000/${image}`;
 
   return (
-    <div className="event-card" onClick={() => setExpanded(!expanded)}>
+    <div className="event-card" onClick={toggleExpanded}>
       <img src={imagePath} alt={title} className="event-photo" />
       <div className={`event-details ${expanded ? 'expanded' : ''}`}>
         <h3 className="event-name"><strong>Title:</strong>{title}</h3>
@@ -31,7 +43,11 @@ function EventCard({ image, title, description, location, date }) {
         <div className="event-date">
           <span><FontAwesomeIcon icon={faCalendarAlt} /> <strong>Date:</strong>{formattedDate}</span>
         </div>
-        {expanded && <button className="apply-button">Apply for Volunteer</button>}
+        {expanded && (
+          <Link to="/volunteer" className="apply-button">
+            Apply for Volunteer
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './navbar.css'
-import logo1 from "./logo1.jpg" // If using React Router
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import './navbar.css';
+import logo1 from "./logo1.jpg";
 
 function Navbar() {
   return (
@@ -12,11 +14,13 @@ function Navbar() {
       </div>
       <div className="navbar-menu">
         <Link to="/" className="navbar-item">Home</Link>
-        <Link to="#" className="navbar-item">About</Link>
-        <Link to="#" className="navbar-item">History</Link>
-        <Link to="/add-event" className="navbar-item event-btn" >Add Event</Link>
-        <Link to="/login" className="navbar-item signin-btn">Sign-In</Link>
+        <Link to="/about" className="navbar-item">About</Link>
+        <Link to="/history" className="navbar-item">History</Link>
         
+        <Link to="/login" className="navbar-item signin-btn">Sign-In</Link>
+        <Link to="/dashboard" className="navbar-item">
+          <FontAwesomeIcon icon={faUser} />
+        </Link>
       </div>
     </nav>
   );
