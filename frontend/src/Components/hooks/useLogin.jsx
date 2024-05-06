@@ -6,6 +6,11 @@ const useLogin = () => {
     const [loading, setLoading] = useState(false);
     // const { setAuthUser } = useAuthContext();
 
+    const isAuthenticated = () => {
+        // Check if the token exists in local storage
+        return localStorage.getItem("token") !== null;
+    };
+
     const login = async ({ email, password }) => {
         const success = validateInput({ email, password });
         if (!success) {
@@ -37,7 +42,7 @@ const useLogin = () => {
         }
     };
 
-    return { loading, login };
+    return { loading, login, isAuthenticated};
 };
 
 function validateInput({ email, password }) {

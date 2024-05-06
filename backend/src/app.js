@@ -10,6 +10,7 @@ dotenv.config({ path: "./.env" });
 import database from './db/database.js';
 import userRouter from './routes/userRoutes.js';
 import eventRouter from './routes/eventRoutes.js';
+import volunteerRouter from './routes/volunteerRoutes.js';
 
 
 
@@ -34,6 +35,7 @@ database();
 //using the routes 
 app.use('/api/v1/users',userRouter);
 app.use('/api/v1/events',eventRouter);
+app.use('/api/v1/volunteers',volunteerRouter);
 
 
 const PORT = 3000;
