@@ -1,16 +1,21 @@
-// Components/context/protectedRoutes.jsx
-import React from 'react';
-import { Route, Navigate } from 'react-router-dom'; // Import Redirect from react-router-dom
+import { useEffect } from "react";
+import { Link,useNavigate } from "react-router-dom";
 
-const ProtectedRoute = ({ element, ...rest }) => {
-  const { authUser } = useAuthContext();
+function ProtectedRoutes({ children }) {
+    const navigate = useNavigate();
 
-  return (
-    <Route
-      {...rest}
-      element={authUser ? element : <Navigate to="/login" replace />}
-    />
-  );
-};
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            navigate("/login");
+        }
+    }, [navigate]);
 
-export default ProtectedRoute;
+    return (
+        <div>
+            {children}
+        </div>
+    );
+}
+
+export default ProtectedRoutes;
