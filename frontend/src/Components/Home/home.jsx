@@ -65,16 +65,14 @@ function Homepage() {
       const response = await fetch("http://localhost:3000/api/v1/events/allevents");
       
       if (!response.ok) {
-        throw new Error(`Failed to fetch events: ${response.status} - ${response.statusText}`);
+        throw new Error("Failed to fetch events");
       }
-  
       const data = await response.json();
       setEvents(data);
     } catch (error) {
       console.error("Error fetching events:", error);
     }
   };
-  
 
   return (
     <div className="homepage">

@@ -28,6 +28,8 @@ const useLogin = () => {
                 toast.error(data.error);
             } else {
                 toast.success("Logged in successfully");
+                //storing the user 
+                setAuthUser(data);
                
             }
 

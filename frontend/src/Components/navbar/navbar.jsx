@@ -26,7 +26,7 @@ function Navbar() {
         )}
         {/* Show the user icon only when the user is logged in */}
         {authUser && (
-          <Link to="/sidebar" className="navbar-item">
+          <Link to="/dashboard" className="navbar-item">
             <FontAwesomeIcon icon={faUser} />
           </Link>
         )}

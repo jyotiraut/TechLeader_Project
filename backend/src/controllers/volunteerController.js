@@ -24,4 +24,13 @@ const saveVolunteerData = async (req, res) => {
     }
 };
 
-export { saveVolunteerData };
+const getVolunteers = async (req, res) => {
+    try {
+        const volunteers = await Volunteer.find({});
+        res.status(200).json(volunteers);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+export { saveVolunteerData,getVolunteers };
