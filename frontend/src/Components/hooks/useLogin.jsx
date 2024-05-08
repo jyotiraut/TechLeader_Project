@@ -1,15 +1,12 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-// import { useAuthContext } from "../context/authContext";
+import { useAuthContext } from "../context/authContext";
 
 const useLogin = () => {
     const [loading, setLoading] = useState(false);
-    // const { setAuthUser } = useAuthContext();
+    const { setAuthUser } = useAuthContext();
 
-    const isAuthenticated = () => {
-        // Check if the token exists in local storage
-        return localStorage.getItem("token") !== null;
-    };
+  
 
     const login = async ({ email, password }) => {
         const success = validateInput({ email, password });
@@ -31,9 +28,15 @@ const useLogin = () => {
                 toast.error(data.error);
             } else {
                 toast.success("Logged in successfully");
-                // localStorage.setItem("user", JSON.stringify(data.user));
-                // setAuthUser(data);
+                //storing the user 
+                setAuthUser(data);
+               
             }
+
+            //localstorage 
+            localStorage.setItem("chat-user", JSON.stringify(data));
+            setAuthUser(data);
+
         } catch (error) {
             console.log(error);
             toast.error("Something went wrong");
@@ -42,7 +45,7 @@ const useLogin = () => {
         }
     };
 
-    return { loading, login, isAuthenticated};
+    return { loading, login};
 };
 
 function validateInput({ email, password }) {

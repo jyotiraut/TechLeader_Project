@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 const useEvent = () => {
     const [loading, setLoading] = useState(false);
 
-    const addEvent = async ({ title, description, image, date, location }) => {
+    const addEvent = async ({ title, description, image, date, location,userId}) => {
         const success = validateEventData({ title, description, image, date, location });
         if (!success) {
             return;
@@ -20,6 +20,7 @@ const useEvent = () => {
             formdata.append("image", image);
             formdata.append("date", date);
             formdata.append("location", location);
+            formdata.append("userId", userId);
 
             const res = await fetch("http://localhost:3000/api/v1/events/create", {
                 method: "POST",

@@ -1,76 +1,76 @@
 /* Navbar styles */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #ffffff; /* Adjust as needed */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adjust shadow as needed */
-  
-  
-  .navbar-brand {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #333333; /* Adjust as needed */
-  
-  
-  /* navbar.css */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #ffffff; /* Adjust as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adjust shadow as needed */
+
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333333; /* Adjust as needed */
+
+
+/* navbar.css */
 .logo {
-  width: 40px; /* Adjust the size as needed */
-  height: 40px; /* Ensure width and height are the same for a circular shape */
-  border-radius: 50%; /* Make the image circular */
-  object-fit: cover;
-  margin-right: 10px;/* Ensure the image covers the circular area */
+width: 40px; /* Adjust the size as needed */
+height: 40px; /* Ensure width and height are the same for a circular shape */
+border-radius: 50%; /* Make the image circular */
+object-fit: cover;
+margin-right: 10px;/* Ensure the image covers the circular area */
 }
 
-  
-  .brand-name {
-    font-size: 1.5rem; /* Adjust as needed */
-    font-weight: bold;
-    text-decoration: none;
 
-    }
-  }
-  
-  .navbar-menu {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-item {
-    text-decoration: none;
-    color: #6d1313; /* Adjust as needed */
-    margin-right: 1.4rem;
-    /* Adjust spacing as needed */
-  }
-  
-  .navbar-item.active {
-    font-weight: bold;
-    color: #007bff; /* Adjust active link color */
-  }
-  .signin-btn {
-    background-color: #8B4513; /* Brown color */
-    color: #fff; /* White text */
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px; /* Adjust as needed */
-    transition: background-color 0.3s ease; /* Smooth transition */
-        }
-        .event-btn {
-          background-color: rgb(16, 241, 16); /* Brown color */
-          color: #fff; /* White text */
-          border: none;
-          padding: 0.5rem 1rem;
-          border-radius: 5px; /* Adjust as needed */
-          transition: background-color 0.3s ease; /* Smooth transition */
-              }
+.brand-name {
+  font-size: 1.5rem; /* Adjust as needed */
+  font-weight: bold;
+  text-decoration: none;
 
-    .signin-btn:hover {
-    background-color: #A0522D; /* Darker brown on hover */
-    }
-    .event-btn:hover {
-      background-color: #32CD32; /* Darker brown on hover */
+  }
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-item {
+  text-decoration: none;
+  color: #6d1313; /* Adjust as needed */
+  margin-right: 1.4rem;
+  /* Adjust spacing as needed */
+}
+
+.navbar-item.active {
+  font-weight: bold;
+  color: #007bff; /* Adjust active link color */
+}
+.signin-btn {
+  background-color: #8B4513; /* Brown color */
+  color: #fff; /* White text */
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px; /* Adjust as needed */
+  transition: background-color 0.3s ease; /* Smooth transition */
       }
+      .event-btn {
+        background-color: rgb(16, 241, 16); /* Brown color */
+        color: #fff; /* White text */
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px; /* Adjust as needed */
+        transition: background-color 0.3s ease; /* Smooth transition */
+            }
+
+  .signin-btn:hover {
+  background-color: #A0522D; /* Darker brown on hover */
+  }
+  .event-btn:hover {
+    background-color: #32CD32; /* Darker brown on hover */
+    }
 
 }
