@@ -44,9 +44,11 @@ function EventCard({ image, title, description, location, date }) {
           <span><FontAwesomeIcon icon={faCalendarAlt} /> <strong>Date:</strong>{formattedDate}</span>
         </div>
         {expanded && (
-          <Link to="/volunteer" className="apply-button">
+          <div className="apply-button">
+            <Link to="/volunteer" >
             Apply for Volunteer
           </Link>
+          </div>
         )}
       </div>
     </div>

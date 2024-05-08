@@ -68,7 +68,7 @@ object-fit: cover;
 
 .event-photo {
   width: 100%;
-  max-height: 200px; /* Adjust height as needed */
+  height: 200px; /* Adjust height as needed */
   object-fit: cover;
 }
 
@@ -156,14 +156,19 @@ object-fit: cover;
 .apply-button {
   background-color: green;
   color: white;
+  
   padding: 8px 16px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   margin-top: 10px;
+  
+
+  
 }
 
 .apply-button:hover {
+ 
   background-color: darkgreen;
 }
 
