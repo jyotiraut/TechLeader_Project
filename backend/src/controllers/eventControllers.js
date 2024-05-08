@@ -1,23 +1,23 @@
 import Event from "../models/eventModels.js";
 
-
 // Create a new event
 const createEvent = async (req, res) => {
   try {
     const { title, description, location, date } = req.body;
     const image = req.file ? req.file.path : ""; // Check if file exists in request object
-     
-    console.log('this is ',image.replace(/\\/g, '/'));
-    // Create a new event
+    
+    // Get the user ID from the request object (assuming it's available)
+    const userId = req.user._id; // Assuming the user ID is available in req.user._id, modify this according to your authentication setup
+    console.log(userId)
+    // Create a new event including the user ID
     const event = new Event({
       title,
       description,
       location,
       date,
-      image: image.replace(/\\/g, '/').replace(/^public\//, '')
+      image: image.replace(/\\/g, '/').replace(/^public\//, ''),
+      userId: userId // Include the user ID
     });
-    console.log('this is ',image )
-
 
     // Save the event to the database
     const savedEvent = await event.save();
@@ -28,11 +28,6 @@ const createEvent = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
-        
-
-
-
 
 // Get all events
 const getEvents = async (req, res) => {
@@ -45,7 +40,8 @@ const getEvents = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-//Get events by date
+
+// Get events by date
 const getEventsByDate = async (req, res) => {
   try {
     const { date } = req.params;
@@ -57,4 +53,5 @@ const getEventsByDate = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 export { createEvent, getEventsByDate, getEvents };

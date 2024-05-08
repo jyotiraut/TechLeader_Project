@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useEvent from "../hooks/useEvent";
 import toast from "react-hot-toast";
+import { AuthContext } from "../context/authContext";
 
 
 
 
 const AddEvent = () => {
     const navigate = useNavigate();
+    const {user} = useContext(AuthContext);
     const [formData, setFormData] = useState({
         title: "",
         description: "",

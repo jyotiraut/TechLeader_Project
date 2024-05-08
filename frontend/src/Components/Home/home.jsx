@@ -1,34 +1,55 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import './home.css';
 import img1 from "./Mandir1.jpg"
 import icon2 from "./icon2.jpg"
 import photo1 from "./temple1.jpg"
 
+// Import FontAwesome icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { set } from "mongoose";
+
 function EventCard({ image, title, description, location, date }) {
   const [expanded, setExpanded] = useState(false);
+  const [showVolunteerForm, setShowVolunteerForm] = useState(false);
+
+  const toggleExpanded = () => {
+    setExpanded(!expanded);
+    setShowVolunteerForm(false);
+  }
+
+  const toggleVolunteerForm = (e) => {
+    e.stopPropagation();
+    setShowVolunteerForm(!showVolunteerForm);
+  }
 
   // Format the date
   const formattedDate = new Date(date).toLocaleDateString();
-  console.log("this is ", image)
 
   const imagePath = `http://localhost:3000/${image}`;
 
-
-
   return (
-    <div className="event-card" onClick={() => setExpanded(!expanded)}>
+    <div className="event-card" onClick={toggleExpanded}>
       <img src={imagePath} alt={title} className="event-photo" />
       <div className={`event-details ${expanded ? 'expanded' : ''}`}>
         <h3 className="event-name"><strong>Title:</strong>{title}</h3>
         <div className="event-description">
-          <span> <strong>Description:</strong>{description}</span>
+          <span><strong>Description:</strong>{description}</span>
         </div>
         <div className="event-location">
-          <span><strong>Location:</strong>{location}</span>
+          <span><FontAwesomeIcon icon={faMapMarkerAlt} /> <strong>Location:</strong>{location}</span>
         </div>
         <div className="event-date">
-          <span><strong>Date:</strong>{formattedDate}</span>
+          <span><FontAwesomeIcon icon={faCalendarAlt} /> <strong>Date:</strong>{formattedDate}</span>
         </div>
+        {expanded && (
+          <div className="apply-button">
+            <Link to="/volunteer" >
+            Apply for Volunteer
+          </Link>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -56,7 +77,6 @@ function Homepage() {
   };
   
 
-
   return (
     <div className="homepage">
       {/* First Row */}
@@ -74,7 +94,7 @@ function Homepage() {
         {events.map(event => (
           <div className="column" key={event.id}>
             <EventCard
-                image={event.image}
+              image={event.image}
               title={event.title}
               description={event.description}
               location={event.location}
