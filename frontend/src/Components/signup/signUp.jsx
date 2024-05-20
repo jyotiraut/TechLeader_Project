@@ -66,7 +66,8 @@ const SignUp = () => {
         <div className="signup-container">
             <div className="signup-form">
                 <h1 className="signup-title">
-                    Sign Up <span className="tradition-keepers">TraditionKeepers</span>
+                    Sign Up 
+                    {/* <span className="tradition-keepers">TraditionKeepers</span> */}
                 </h1>
 
                 <TypeCheckbox onCheckBoxChange={handleTypeChange} selectedType={inputs.accountType} />

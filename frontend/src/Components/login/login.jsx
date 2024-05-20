@@ -29,10 +29,11 @@ const Login = () => {
         <div className='login-container'>
             <div className='login-form'>
                 <h1 className='login-title'>
-                    Log In <span className='text-blue-500'>TraditionKeepers</span>
+                    Log In 
+                    {/* <span className='text-blue-500'>TraditionKeepers</span> */}
                 </h1>
 
-                <form className='login-form' onSubmit={handleSubmit}>
+                <form className='login-form-p' onSubmit={handleSubmit}>
                     <div >
                         <input
                         className = "input field"

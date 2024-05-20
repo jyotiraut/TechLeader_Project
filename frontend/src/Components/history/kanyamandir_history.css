@@ -1,43 +1,64 @@
 .history-container {
-    margin-top: 1cm;
+  margin-left: 2in;
+  margin-right: 2in;
+  margin-top:0;
+  margin-bottom: 0.5in;
+}
 
-  }
-  
-  .history-heading {
-    font-size:xxx-large;
-    margin-bottom: 1.5cm;
-    text-align: center;
-    color: rgb(145, 18, 18);
+.center {
+  margin-top: 1.5cm;
+  text-align:center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 50px;
+  color: rgb(93, 19, 19);
+}
 
-  }
-  
-  .history-content {
-    display: flex;
-    justify-content: space-between;
-    line-height: 2;
-  }
-  
-  .history-image img {
-    max-width: 85%;
-    height:fit-content;
-  }
-  
-  .history-description {
-    width: 70%;
-  }
-  
-  .history-section {
-    margin-top: 1.5cm;
-  }
-  
-  .history-subheading {
-    font-size:xx-large;
-    margin-bottom: 0.5cm;
-    color: rgb(145, 18, 18);
+.card {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(247, 239, 239);
+  margin: 0;
+  height: 365px;
+  width: 100%;
+  padding: 12px;
+  font-size: 30px;
 
-  }
-  
-  .history-paragraph {
-    text-align: justify;
-    line-height: 1.8;
-  }
+}
+
+.left {
+  width: 100%;
+}
+
+.left img {
+  width: 103%;
+  height: 360px;
+  justify-content: space-around;
+  border-radius: 6px;
+
+}
+
+.right_ind {
+  width: 70%;
+  padding-left: 1cm; 
+  justify-content:space-between;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 17px;
+  line-height: 2.2;
+}
+
+h2 {
+  margin-top: 0.5cm; 
+  text-align: left;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 30px;
+  color: rgb(93, 19, 19);
+}
+
+p{
+  text-align: justify;
+  line-height: 1.8;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  color: rgb(67, 12, 12);
+}
+
