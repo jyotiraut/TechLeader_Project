@@ -1,39 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
 .about-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 5% auto;
+  width: 1100px;
+  height: auto;
+}
+
+.about-heading {
+  font-size: 150%;
+  font-weight: bold;
+  color: rgb(192, 10, 10);
+  margin: 0 0 2% 0;
+  text-align: center;
+}
+
+.about-content {
+  margin: 1% 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-image {
+  width: 100%;
+  height: 480px;
+}
+
+.about-image img {
+  max-width: 95%;
+  height: auto;
+}
+
+.about-text {
+  width: 100%;
+  text-align: justify;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  color: rgb(71, 13, 13);
+  line-height: 168%;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    margin: 5%;
+    width: auto;
   }
-  
+
   .about-heading {
-    font-size: 25px;
-    font-weight: bold;
-    color: rgb(90, 13, 13); /* Setting the text color to red */
-    margin-bottom: 30px;
+    font-size: 1.8em;
   }
-  
+
   .about-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+    flex-direction: column;
   }
-  
+
   .about-image {
-    margin-right: 15px;
+    width: 100%;
+    margin-bottom: 5%;
   }
-  
-  .about-image img {
-    max-width: 100%;
-    height: auto;
-  }
-  
+
   .about-text {
-    width: 50%; /* Adjust this width as needed */
-    justify-content: space-between;
+    width: 100%;
+    font-size: 1em;
   }
-  
-  .about-text p {
-    color: rgb(129, 45, 45); /* Setting the text color to red */
+}
+
+@media (max-width: 480px) {
+  .about-heading {
+    font-size: 1.6em;
   }
+
+  .about-text {
+    font-size: 0.9em;
+  }
+}

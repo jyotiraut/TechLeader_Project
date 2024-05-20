@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './navbar.css';
 import logo1 from "./logo1.jpg";
+import logo from "./Logo.png"
 import { useAuthContext } from '../context/authContext'; // Assuming the path is correct
 
 function Navbar() {
@@ -12,8 +13,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <img src={logo1} className="logo" alt="" />
-        <span className="brand-name">Tradition Keepers</span>
+        <img src={logo} className="logo" alt="" />
       </div>
       <div className="navbar-menu">
         <Link to="/" className="navbar-item">Home</Link>

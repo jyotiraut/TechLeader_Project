@@ -82,7 +82,7 @@ function Homepage() {
             <div className="flex justify-content-between">
                 <div className="slogan">
                     <h1 className="line-1">
-                        Preserving the <span className="cursive">Past   </span>
+                        Preserving the <span className="cursive">Past</span>
                     </h1>
                     <h1 className="line-2">
                         Embracing the <span className="cursive">Future!</span>
