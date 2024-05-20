@@ -81,6 +81,7 @@ function Homepage() {
     <div className="homepage">
       {/* First Row */}
       <div className="first-row">
+        
         <img src={img1} alt="temple" className="big-image" />
       </div>
       {/* Second Row */}

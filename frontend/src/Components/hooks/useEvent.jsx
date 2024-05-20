@@ -20,7 +20,7 @@ const useEvent = () => {
             formdata.append("image", image);
             formdata.append("date", date);
             formdata.append("location", location);
-            formdata.append("userId", userId);
+          
 
             const res = await fetch("http://localhost:3000/api/v1/events/create", {
                 method: "POST",

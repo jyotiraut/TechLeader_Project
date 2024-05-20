@@ -1,22 +1,27 @@
+import jwt from "jsonwebtoken";
 import Event from "../models/eventModels.js";
 
-// Create a new event
 const createEvent = async (req, res) => {
   try {
     const { title, description, location, date } = req.body;
     const image = req.file ? req.file.path : ""; // Check if file exists in request object
-    
+
     // Get the user ID from the request object (assuming it's available)
-    const userId = req.user._id; // Assuming the user ID is available in req.user._id, modify this according to your authentication setup
-    console.log(userId)
+    // const token = req.cookies.jwt;
+
+    // // Verify and decode the token
+    // const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    // const userId = decoded.id;
+    // console.log("this is the ",userId)
+
     // Create a new event including the user ID
     const event = new Event({
       title,
       description,
       location,
       date,
-      image: image.replace(/\\/g, '/').replace(/^public\//, ''),
-      userId: userId // Include the user ID
+      image: image.replace(/\\/g, "/").replace(/^public\//, ""),
+      
     });
 
     // Save the event to the database
@@ -25,9 +30,13 @@ const createEvent = async (req, res) => {
     res.status(201).json(savedEvent);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
+    
+     
   }
 };
+
+
+
 
 // Get all events
 const getEvents = async (req, res) => {

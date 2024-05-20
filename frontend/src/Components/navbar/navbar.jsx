@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './navbar.css';
 import logo1 from "./logo1.jpg";
-import { useAuthContext } from '../context/authContext'; // Assuming the path is correct
+import { useAuthContext } from '../context/authContext';
 
 function Navbar() {
   const { authUser } = useAuthContext();
@@ -12,23 +12,20 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <img src={logo1} className="logo" alt="" />
+        <img src={logo1} className="logo" alt="Logo" />
         <span className="brand-name">Tradition Keepers</span>
       </div>
       <div className="navbar-menu">
         <Link to="/" className="navbar-item">Home</Link>
         <Link to="/about" className="navbar-item">About</Link>
         <Link to="/history" className="navbar-item">History</Link>
-        {/* Conditionally render based on authentication status */}
-       
         {!authUser && (
           <Link to="/login" className="navbar-item signin-btn">Sign-In</Link>
         )}
-        {/* Show the user icon only when the user is logged in */}
         {authUser && (
-          <Link to="/dashboard" className="navbar-item">
+          
             <FontAwesomeIcon icon={faUser} />
-          </Link>
+         
         )}
       </div>
     </nav>
