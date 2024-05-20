@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useEvent from "../hooks/useEvent";
 import toast from "react-hot-toast";
 import { AuthContext } from "../context/authContext";
+import Sidebar from "../admin/sidebar/sidebar";
 
 const AddEvent = () => {
   const navigate = useNavigate();
@@ -57,11 +58,12 @@ const AddEvent = () => {
   };
 
   return (
-    <div className="signup-container">
-      <div className="signup-form">
-        <h1 className="signup-title">Add Event</h1>
+    <div className="dashboard-container">
+      <Sidebar />
+      <div className="main-content">
+        <h1>Add Events</h1>
 
-        <form onSubmit={handleSubmit} className="mt-4">
+        <form className="add-event-form mt-4" onSubmit={handleSubmit} >
           <div>
             <label htmlFor="title" className="label">
               Title
@@ -136,14 +138,9 @@ const AddEvent = () => {
           </div>
 
           <button type="submit" className="btn-signup mt-4">
-            Done
+            Create
           </button>
         </form>
-
-        {/* Link to navigate back or any other page */}
-        <Link to="/" className="link-home mt-4 block text-center">
-          Back to Home
-        </Link>
       </div>
     </div>
   );

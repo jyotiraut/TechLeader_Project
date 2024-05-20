@@ -1,14 +1,14 @@
 .history-container {
   margin-left: 2in;
   margin-right: 2in;
-  margin-top:0;
+  margin-top: 0;
   margin-bottom: 0.5in;
 }
 
 .center {
   margin-top: 1.5cm;
-  text-align:center;
-  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+
   font-size: 50px;
   color: rgb(93, 19, 19);
 }
@@ -22,7 +22,6 @@
   width: 100%;
   padding: 12px;
   font-size: 30px;
-
 }
 
 .left {
@@ -34,31 +33,29 @@
   height: 360px;
   justify-content: space-around;
   border-radius: 6px;
-
 }
 
 .right_ind {
   width: 70%;
-  padding-left: 1cm; 
-  justify-content:space-between;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding-left: 1cm;
+  justify-content: space-between;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 17px;
   line-height: 2.2;
 }
 
 h2 {
-  margin-top: 0.5cm; 
+  margin-top: 0.5cm;
   text-align: left;
-  font-family: 'Times New Roman', Times, serif;
+
   font-size: 30px;
   color: rgb(93, 19, 19);
 }
 
-p{
+p {
   text-align: justify;
   line-height: 1.8;
-  font-family: 'Times New Roman', Times, serif;
+
   font-size: 18px;
   color: rgb(67, 12, 12);
 }
-

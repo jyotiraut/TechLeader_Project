@@ -1,11 +1,17 @@
 .footer {
-  background-color: rgb(105, 16, 16);
-  padding: 2rem;
+  padding: 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: aliceblue;
-  margin-top: 65px; /* Adjust this value to move the footer lower */
+  display: flex;
+  flex-direction: column;
+  width: 1100px;
+  border-top: 1px solid rgb(187, 187, 187);
+  margin: 0 auto;
+  padding: 20px;
+  /* margin-top: 65px; */
+  /* Adjust this value to move the footer lower */
 }
 
 .footer-left {
@@ -14,8 +20,20 @@
 }
 
 .footer-logo {
-  width: 50px; /* Adjust size as needed */
-  margin-right: 20px; /* Adjust spacing between logos */
+  width: 100px; /* Adjust size as needed */
+  margin-right: 0px; /* Adjust spacing between logos */
+  mix-blend-mode: multiply;
+}
+
+.footer-logos {
+  margin: auto;
+  margin: 20px 0;
+}
+
+.footer-copy p {
+  margin: auto;
+  text-align: center;
+  font-size: 14px;
 }
 
 .footer-right {
