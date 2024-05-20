@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import './eventdetails.css';
 
-function Eventdetails() {
+const Eventdetails = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {

@@ -5,6 +5,7 @@ const protectedRoutes = async (req, res, next) => {
             return res.status(404).json({ message: "Token not found" });
         }
         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        console.log("this is the decoded",decoded)
         if (!decoded) {
             return res.status(401).json({ message: "Unauthorized: Invalid token" });
         }
