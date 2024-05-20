@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import './home.css';
 import img1 from "./Mandir1.jpg"
 import icon2 from "./icon2.jpg"
-import photo1 from "./temple1.jpg"
+import maniImg from"./website.jpg"
+
 
 // Import FontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-import { set } from "mongoose";
 
 function EventCard({ image, title, description, location, date }) {
   const [expanded, setExpanded] = useState(false);
@@ -33,23 +33,21 @@ function EventCard({ image, title, description, location, date }) {
     <div className="event-card" onClick={toggleExpanded}>
       <img src={imagePath} alt={title} className="event-photo" />
       <div className={`event-details ${expanded ? 'expanded' : ''}`}>
-        <h3 className="event-name"><strong>Title:</strong>{title}</h3>
-        <div className="event-description">
-          <span><strong>Description:</strong>{description}</span>
-        </div>
+        <h3 className="event-name"><strong> </strong>{title}</h3>
         <div className="event-location">
-          <span><FontAwesomeIcon icon={faMapMarkerAlt} /> <strong>Location:</strong>{location}</span>
+          <span><FontAwesomeIcon icon={faMapMarkerAlt} /> {location}</span>
         </div>
         <div className="event-date">
-          <span><FontAwesomeIcon icon={faCalendarAlt} /> <strong>Date:</strong>{formattedDate}</span>
+          <span><FontAwesomeIcon icon={faCalendarAlt} /> <strong> </strong>{formattedDate}</span>
         </div>
-        {expanded && (
+        <div className="event-description">
+          <span><strong> </strong>{description}</span>
+        </div>
           <div className="apply-button">
             <Link to="/volunteer" >
             Apply for Volunteer
           </Link>
           </div>
-        )}
       </div>
     </div>
   );
@@ -79,14 +77,72 @@ function Homepage() {
   return (
     <div className="homepage">
       {/* First Row */}
-      <div className="first-row">
-        <img src={img1} alt="temple" className="big-image" />
+      <section className="hero-banner">
+        <div className="first-row">
+            <div className="flex justify-content-between">
+                <div className="slogan">
+                    <h1 className="line-1">
+                        Preserving the <span className="cursive">Past   </span>
+                    </h1>
+                    <h1 className="line-2">
+                        Embracing the <span className="cursive">Future!</span>
+                    </h1>
+                    <h2>Explore different volunteer opportunities,<br />and start making a meaningful impact today.</h2>
+                </div>
+                <div className="big-image">
+                    <div className="illustration flex justify-content-end">
+                        <img src="./src/Components/Home/website.jpg" alt="illustration" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+      <div className="workingContainer">
+        <div className="flex justify-content-between services">
+          <div className="service">
+            
+            <div className="icon">
+              <i className="ion-md-appstore"></i>
+            </div>
+            <h1 className="service-title bold">STEP 1</h1>
+            <p className="service-description">
+              Explore different culture and Voulunteering Oppurtunities.
+            </p>
+          </div>
+          <div className="service">
+            <div className="icon">
+              <i className="ion-md-bowtie"></i>
+            </div>
+            <h1 className="service-title bold">STEP 2</h1>
+            <p className="service-description">
+              Receive conformation and be part of the Event.
+            </p>
+          </div>
+          <div className="service">
+            <div className="icon">
+              <i className="ion-md-flame"></i>
+            </div>
+            <h1 className="service-title bold">STEP 3</h1>
+            <p className="service-description">
+              If your are organizing any cultural event, add event and get Volunteers easily.         
+            </p>
+          </div>
+        </div>
       </div>
+    </section>
+
+      
+
+
+
       {/* Second Row */}
       <div className="second-row">
         <img src={icon2} className="icon" />
         <span>Cultural Events</span>
       </div>
+    
 
       <div className="third-row">
       
@@ -95,9 +151,9 @@ function Homepage() {
             <EventCard
               image={event.image}
               title={event.title}
-              description={event.description}
               location={event.location}
               date={event.date}
+              description={event.description}
             />
           </div>
         ))}
@@ -107,3 +163,4 @@ function Homepage() {
 }
 
 export default Homepage;
+
