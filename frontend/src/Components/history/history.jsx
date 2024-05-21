@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './history.css';
-
+import logo from '../Home/icon2.jpg'
 const History = () => {
   const [openCard, setOpenCard] = useState(null);
 
@@ -12,7 +12,7 @@ const History = () => {
   return (
     <div className="history-container-main">
       <div className="heading">
-        <img src="/src/Components/Home/icon2.jpg" alt="Places" />
+        <img src={logo} alt="Places" />
         <h1>Cultural Places</h1>
       </div>
       <div className="cards-container">
