@@ -1,12 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaChartBar, FaCalendarAlt, FaUsers } from 'react-icons/fa';
+import { FaChartBar, FaCalendarAlt, FaUsers, FaSignOutAlt } from 'react-icons/fa';
 import { BiUser } from 'react-icons/bi';
 import './Sidebar.css';
-import { useAuthContext } from '../../context/authContext' // Ensure this path is correct based on your project structure
+import { useAuthContext } from '../../context/authContext';
+import useLogout from "../../hooks/useLogout";
 
 const Sidebar = () => {
   const { authUser } = useAuthContext();
+  const { loading, logout } = useLogout();
+
+  const handleLogout = async () => {
+    await logout();
+  };
 
   return (
     <div className="sidebar">
@@ -30,6 +36,10 @@ const Sidebar = () => {
           <FaUsers />
           <span>Volunteers</span>
         </Link>
+        <div className="menu-item" onClick={handleLogout}>
+          <FaSignOutAlt />
+          <span>Logout</span>
+        </div>
       </div>
     </div>
   );
