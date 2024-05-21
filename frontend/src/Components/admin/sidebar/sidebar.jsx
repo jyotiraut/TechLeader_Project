@@ -1,18 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaChartBar, FaCalendarAlt, FaUsers } from 'react-icons/fa';
-import "./Sidebar.css"
 import { BiUser } from 'react-icons/bi';
+import './Sidebar.css';
+import { useAuthContext } from '../../context/authContext' // Ensure this path is correct based on your project structure
 
 const Sidebar = () => {
+  const { authUser } = useAuthContext();
+
   return (
     <div className="sidebar">
       <div className='user-image-wrapper'>
         <div className='user-image'>
           <BiUser style={{ fontSize: "40px" }} />
         </div>
-        <p>Ward 17 Org</p>
-        <p>ward17@gmail.com</p>
+        <p>{authUser ? authUser.organizationName : 'Ward 17 Org'}</p>
+        <p>{authUser ? authUser.email : 'ward17@gmail.com'}</p>
       </div>
       <div className="menu">
         <Link to="/dashboard" className="menu-item">

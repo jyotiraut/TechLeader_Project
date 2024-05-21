@@ -91,7 +91,7 @@ function Homepage() {
                 </div>
                 <div className="big-image">
                     <div className="illustration flex justify-content-end">
-                        <img src="./src/Components/Home/website.jpg" alt="illustration" />
+                        <img src={maniImg} alt="illustration" />
                     </div>
                 </div>
             </div>
