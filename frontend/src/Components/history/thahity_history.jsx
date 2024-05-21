@@ -1,5 +1,6 @@
 import React from 'react';
 import './indrayani_history.css';
+import thaiti from './thahitiChowk.jpg'
 
 const Thahity_History = () => {
   return (
@@ -8,7 +9,7 @@ const Thahity_History = () => {
         
         <div className="card">
             <div className="left">
-            <img src="/src/Components/history/thahitiChowk.jpg" alt="Thaythi" />
+            <img src={thaiti}alt="Thaythi" />
             </div>
             <div className="right_ind">
             <strong>Name:</strong> Thahity<br/>

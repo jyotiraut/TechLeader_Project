@@ -1,5 +1,7 @@
 import React from 'react';
 import './indrayani_history.css';
+import kanyamandir from './kanyamandir.jpg'
+
 
 const KanyaMandir_History = () => {
   return (
@@ -8,7 +10,7 @@ const KanyaMandir_History = () => {
         
         <div className="card">
             <div className="left">
-            <img src="/src/Components/history/kanyamandir.jpg" alt="Kanya Mandir"/>
+            <img src={kanyamandir} alt="Kanya Mandir"/>
             </div>
             <div className="right_ind">
                 <strong>Name:</strong> Kanya Mandir<br/>
