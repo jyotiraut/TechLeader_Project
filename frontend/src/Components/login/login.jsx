@@ -16,14 +16,15 @@ const Login = () => {
     const { login } = useLogin();
 
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         await login(credentials);
-        // Redirect to homepage after successful login
-        
-        navigate('/');
+        // Check if login was successful before navigating
+        if (!loading) {
+            navigate('/');
+        }
     };
+    
 
     return (
         <div className='login-container'>
