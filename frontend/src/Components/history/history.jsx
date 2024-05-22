@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './history.css';
 import logo from '../Home/icon2.jpg'
 import kanyamandir from './kanyamandir.jpg'
-import photo from './indrayani.jpg';
+import photo from './picind2.jpg';
 import thaiti from './thahitiChowk.jpg'
 const History = () => {
   const [openCard, setOpenCard] = useState(null);

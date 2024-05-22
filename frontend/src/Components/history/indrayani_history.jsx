@@ -1,6 +1,6 @@
 import React from 'react';
 import './indrayani_history.css';
-import photo from './indrayani.jpg';
+import photo from './picind2.jpg';
 
 const Indrayani_History = () => {
   return (
