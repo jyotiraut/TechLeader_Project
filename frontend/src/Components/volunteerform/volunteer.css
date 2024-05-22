@@ -1,37 +1,60 @@
-/* volunteer.css */
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
-/* Form container */
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.volunteer-container {
+  display: flex;
+}
+
+.form-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9; /* Set background color for the form container */
+}
+
+.message-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9; /* Set background color for the message container */
+  order: 1; /* Change the order to 1 to display on the right */
+}
+
+.message-container p {
+  margin: 0;
+}
+
 form {
-    width: 300px; /* Adjust width as needed */
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  /* Form inputs */
-  input {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  /* Submit button */
-  button[type="submit"] {
-    width: 100%;
-    background-color: green;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: darkgreen;
-  }
-  
+  max-width: 90%;
+  margin: auto;
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  background-color: #f9f9f9;
+}
+
+button[type="submit"] {
+  width: 100%;
+  background-color: #6f0e0e;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #bc6060;
+}
