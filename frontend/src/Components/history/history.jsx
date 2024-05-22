@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './history.css';
 import logo from '../Home/icon2.jpg'
+import kanyamandir from './kanyamandir.jpg'
+import photo from './indrayani.jpg';
+import thaiti from './thahitiChowk.jpg'
 const History = () => {
   const [openCard, setOpenCard] = useState(null);
 
@@ -17,7 +20,7 @@ const History = () => {
       </div>
       <div className="cards-container">
         <div className="cardHistory" onClick={() => handleCardClick(0)}>
-          <img src="/src/Components/history/picind2.jpg" alt="Indrayani Temple"/>
+          <img src={photo} alt="Indrayani Temple"/>
           <div className="text">
             <p>
               <div className='card-Name'>
@@ -36,7 +39,7 @@ const History = () => {
         
         </div>
         <div className="cardHistory" onClick={() => handleCardClick(1)}>
-          <img src="/src/Components/history/kanyamandir.jpg" alt="Kanya Mandir"/>
+          <img src={kanyamandir} alt="Kanya Mandir"/>
           <div className="text">
             <p>
               <div className='card-Name'>
@@ -55,7 +58,7 @@ const History = () => {
           
         </div>
         <div className="cardHistory" onClick={() => handleCardClick(2)}>
-          <img src="/src/Components/history/thahitiChowk.jpg" alt="Thahity" />
+          <img src={ thaiti} alt="Thahity" />
           <div className="text">
             <p>
               <div className='card-Name'>
