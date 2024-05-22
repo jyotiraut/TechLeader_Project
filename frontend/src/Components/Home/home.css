@@ -169,6 +169,7 @@
 /* Third Row */
 .third-row {
   display:flex;
+  flex-wrap: wrap;
   justify-content:space-between;
   margin-left: 5%;
   margin-top: 1.5%;
@@ -178,9 +179,10 @@
 }
 
 .column {
-  flex: 30%;
-  margin: 10px;
-  justify-content: center;
+  flex: 1 1 calc(33.333% - 20px); /* Three columns with space in between */
+  max-width: calc(33.333% - 20px); /* Ensure they don't exceed three in a row */
+  box-sizing: border-box; /* Ensure padding and border are included in width calculation */
+  margin: 10px; /* Space around each column */
 }
 
 .event-card {
