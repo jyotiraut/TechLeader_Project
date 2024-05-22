@@ -2,7 +2,7 @@ import React from "react";
 import './footer.css'; // Import your custom CSS file for footer styling
 import logo1 from "../images/logo1.png";
 import logo2 from "../images/logo2.jpg";
-import logo3 from "../images/logo2.jpg";
+import logo3 from "../images/techleader.png";
 
 function Footer() {
   return (
