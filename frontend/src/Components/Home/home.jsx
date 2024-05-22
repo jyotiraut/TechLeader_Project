@@ -153,6 +153,7 @@ function Homepage() {
               title={event.title}
               location={event.location}
               date={event.date}
+              description={event.description}
              
             />
           </div>
