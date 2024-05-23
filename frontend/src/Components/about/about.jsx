@@ -2,6 +2,14 @@ import React from 'react';
 import './about.css';
 import about from "./about.jpg"
 import aboutHeading from "./aboutHeading.jpg";
+import mentor from "./mentor.jpg";
+import kritika from "./kritika.png";
+import roza from "./Roza.png";
+import jyoti from "./jyoti.png";
+
+
+
+
 
 const About = () => {
   return (
@@ -28,6 +36,31 @@ Organizations conducting cultural events in Ward 17 can showcase their initiativ
 Join us on this journey to celebrate and preserve the cultural heritage of Ward 17. Let's come together to explore, cherish, and promote the essence of this unique community. <br/>
 
         </p>
+      </section>
+      <section className="our-team-section">
+        <h1>OUR TEAM</h1>
+        <div className="team-members">
+          <div className="team-member">
+            <img src={jyoti} alt="Team Member 1" className="team-image" />
+            <p className="team-name">Jyoti Raut</p>
+          </div>
+          <div className="team-member">
+            <img src={kritika} alt="Team Member 2" className="team-image" />
+            <p className="team-name">Kritika Panta</p>
+          </div>
+          <div className="team-member">
+            <img src={roza} alt="Team Member 3" className="team-image" />
+            <p className="team-name">Roza Shrestha</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="our-mentor-section">
+        <h1>OUR MENTOR</h1>
+        <div className="mentor">
+          <img src={mentor} alt="Mentor" className="mentor-image" />
+          <p className="mentor-name">Akas Rai</p>
+        </div>
       </section>
     </div>
   );

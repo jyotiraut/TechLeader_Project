@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=REM:ital,wght@0,100..900;1,100..900&family=Sedan+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=REM:ital,wght@0,100..900;1,100..900&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Sedan+SC&display=swap');
+
 body {
   font-family: "Lato", sans-serif;
 }
 
 .about-container {
   background-color: #fdeeee;
-
   width: 100%;
+  height: auto;
   margin: 0;
   align-content: center;
   text-align: center;
@@ -72,7 +74,7 @@ align-items: center;
 
 .about-us-section h1 {
   font-size: 40px;
-  color: #333;
+  color: #960808;
 }
 
 
@@ -99,4 +101,53 @@ align-items: center;
   color: #666;
   text-align: justify;
   margin-bottom: 30px;
+}
+
+.our-team-section, .our-mentor-section {
+  background-color: #fdeeee;
+  text-align: center;
+}
+
+.our-team-section h1, .our-mentor-section h1 {
+  font-size: 20px;
+  font-family: "Radio Canada Big", sans-serif;
+  color: #960808;
+  margin-bottom: 20px;
+}
+
+.team-members {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.team-member {
+  text-align: center;
+}
+
+.team-image, .mentor-image {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.team-name, .mentor-name {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+
+}
+
+.mentor {
+  text-align: center;
+}
+
+.our-mentor-section{
+  margin-bottom: 5%;
+}
+
+.our-team-section{
+  margin-bottom: 2.5%;
 }
