@@ -6,17 +6,23 @@ body {
 
 .volunteer-container {
   display: flex;
+  flex-direction: row-reverse;
+  margin: 5%;
+  align-items: center;
 }
 
 .form-container {
+  flex-direction: row;
   flex: 1;
   padding: 20px;
   background-color: #f9f9f9; /* Set background color for the form container */
 }
 
+
 .message-container {
   flex: 1;
   padding: 20px;
+  font-family:"Lato", sans-serif;;
   background-color: #f9f9f9; /* Set background color for the message container */
   order: 1; /* Change the order to 1 to display on the right */
 }
