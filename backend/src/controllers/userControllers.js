@@ -41,7 +41,7 @@ const signupUser = async (req, res) => {
             accountType
         });
 
-        generateTokenSetCookie(newUser._id, res);
+        const token = generateTokenSetCookie(newUser._id, res); // Get the token
         await newUser.save();
 
         res.status(200).json({
@@ -50,8 +50,9 @@ const signupUser = async (req, res) => {
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
-           accountType: newUser.type,
-            organizationName: newUser.organizationName
+            accountType: newUser.accountType,
+            organizationName: newUser.organizationName,
+            token, // Include the token in the response
         });
     } catch (error) {
         console.error(error.message);
@@ -62,44 +63,43 @@ const signupUser = async (req, res) => {
 
 
 
-const loginUser =  async (req, res) => {
-   try{
-    const {email,password} = req.body
-    const user = await User.findOne({email})
-    if(!user){
-        return res.status(400).json({message:"Invalid email or password"})
-    }
+const loginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ message: "Invalid email or password" });
+        }
 
-    const isPasswordCorrect = await bcrypt.compare(password,user.password)
-    if(!isPasswordCorrect){
-        return res.status(400).json({message:"Invalid email or password"})
-    }
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        if (!isPasswordCorrect) {
+            return res.status(400).json({ message: "Invalid email or password" });
+        }
 
-    generateTokenSetCookie(user._id,res)
-    res.status(200).json({
-        message:"Login successful",
-        _id : user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email : user.email,
-        type: user.type,
-        organizationName: user.organizationName,
-        token : user.token 
-    });
-   }catch(error){
-    res.status(500).json({message:"Internal server error",error:error.message})
-   }
+        const token = generateTokenSetCookie(user._id, res); // Get the token
+        res.status(200).json({
+            message: "Login successful",
+            _id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            accountType: user.accountType,
+            organizationName: user.organizationName,
+            token, // Include the token in the response
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error", error: error.message });
+    }
 };
 
-const logoutUser = async (req,res)=>{
-    try{
-        res.cookie("jwt","",{maxAge:0})
-        res.status(200).json({message:"User logout successfully"})
-
-    }catch(error){
-        console.log(error.message)
-        res.status(500).json({message:"Internal server error",error:error.message})
+const logoutUser = async (req, res) => {
+    try {
+        res.cookie("jwt", "", { maxAge: 0 });
+        res.status(200).json({ message: "User logged out successfully" });
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ message: "Internal server error", error: error.message });
     }
-}
+};
 
 export { signupUser, loginUser, logoutUser };

@@ -30,6 +30,7 @@ const useLogin = () => {
         // Store the user in the context and localStorage
         setAuthUser(data);
         localStorage.setItem("chat-user", JSON.stringify(data));
+        localStorage.setItem("token", data.token);
         // Navigate to homepage
         navigate("/"); // Adjust the route as necessary
       } else {

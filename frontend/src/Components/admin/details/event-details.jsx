@@ -14,15 +14,33 @@ const Eventdetails = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/v1/events/allevents");
+      const userData = JSON.parse(localStorage.getItem("chat-user")); 
+      console.log("User Data from localStorage:", userData); 
+      
+      const userId = userData?._id; // Extract user ID
+      console.log("Extracted User ID:", userId); // Debugging
+
+      if (!userId) {
+        console.error("User ID not found in localStorage");
+        return;
+      }
+
+      const response = await fetch(`http://localhost:3000/api/v1/events/user-events/${userId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (!response.ok) {
-        throw new Error("Failed to fetch events");
+        throw new Error("Failed to fetch user events");
       }
+
       const data = await response.json();
+      console.log("Fetched Events Data:", data); // Debugging
       setEvents(data);
     } catch (error) {
-      console.error("Error fetching events:", error);
+      console.error("Error fetching user events:", error);
     }
   };
 
@@ -37,7 +55,7 @@ const Eventdetails = () => {
       <div className="main-content">
         <div className="event-details-page">
           <div className="event-details-table">
-            <h1>All Events</h1>
+            <h1>My Events</h1>
             <table>
               <thead>
                 <tr>
@@ -50,7 +68,7 @@ const Eventdetails = () => {
               </thead>
               <tbody>
                 {events.map(event => (
-                  <tr key={event.id}>
+                  <tr key={event._id}>
                     <td>{event.title}</td>
                     <td>{event.description}</td>
                     <td>{event.location}</td>
@@ -70,6 +88,6 @@ const Eventdetails = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Eventdetails;

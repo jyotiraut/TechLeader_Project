@@ -21,7 +21,11 @@ const eventSchema = mongoose.Schema({
         type: String,
         required: true
     },
- 
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User', // Reference to the User model
+        required: true // Ensures that userId is required when creating an event
+      }
 }, { timestamps: true });
 
 const Event = mongoose.model("Event", eventSchema); 

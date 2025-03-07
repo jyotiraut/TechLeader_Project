@@ -33,6 +33,7 @@ const useSignUp = () => {
         
 
             //localstorage 
+            localStorage.setItem("token", data.token);
             localStorage.setItem("chat-user", JSON.stringify(data));
             setAuthUser(data);
 

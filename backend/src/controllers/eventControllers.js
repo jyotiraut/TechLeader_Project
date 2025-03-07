@@ -5,8 +5,8 @@ const createEvent = async (req, res) => {
   try {
     const { title, description, location, date } = req.body;
     const image = req.file ? req.file.path : ""; // Check if file exists in request object
-
-    // Get the user ID from the request object (assuming it's available)
+    const userId = req.user._id;   
+    
     // const token = req.cookies.jwt;
 
     // // Verify and decode the token
@@ -20,6 +20,7 @@ const createEvent = async (req, res) => {
       description,
       location,
       date,
+      userId,
       image: image.replace(/\\/g, "/").replace(/^public\//, ""),
       
     });
@@ -50,6 +51,30 @@ const getEvents = async (req, res) => {
   }
 };
 
+const getUserEvents = async (req, res) => {
+  try {
+    const { userId } = req.params; // Get userId from URL
+
+    console.log("Fetching events for userId:", userId); // Debugging
+
+    if (!userId) {
+      return res.status(400).json({ error: "User ID is required" });
+    }
+
+    // Fetch events where `userId` matches the logged-in user's ID
+    const events = await Event.find({ userId: userId });
+
+    console.log("Fetched Events:", events); // Debugging
+    res.status(200).json(events);
+  } catch (error) {
+    console.error("Error fetching user events:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+
+
+
 // Get events by date
 const getEventsByDate = async (req, res) => {
   try {
@@ -63,4 +88,4 @@ const getEventsByDate = async (req, res) => {
   }
 };
 
-export { createEvent, getEventsByDate, getEvents };
+export { createEvent, getEventsByDate, getEvents,getUserEvents };

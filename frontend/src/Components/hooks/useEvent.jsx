@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 const useEvent = () => {
     const [loading, setLoading] = useState(false);
 
-    const addEvent = async ({ title, description, image, date, location,userId}) => {
+    const addEvent = async ({ title, description, image, date, location }) => {
         const success = validateEventData({ title, description, image, date, location });
         if (!success) {
             return;
@@ -12,28 +12,36 @@ const useEvent = () => {
 
         setLoading(true);
         try {
-            // Your code to add an event goes here
-            // // Replace this with your actual API call or database operation
+            // Retrieve the token from localStorage
+            const token = localStorage.getItem("token");
+            if (!token) {
+                toast.error("You are not authenticated. Please log in.");
+                return;
+            }
+
+            // Create FormData for the request body
             const formdata = new FormData();
             formdata.append("title", title);
             formdata.append("description", description);
             formdata.append("image", image);
             formdata.append("date", date);
             formdata.append("location", location);
-          
 
+            // Send the request to the protected route
             const res = await fetch("http://localhost:3000/api/v1/events/create", {
                 method: "POST",
-                // headers: {
-                //     "Content-Type": "multipart/form-data"
-                // },
-                body: formdata
+                headers: {
+                    Authorization: `Bearer ${token}`, // Include the token in the header
+                },
+                body: formdata,
             });
+
             const data = await res.json();
             if (data.error) {
                 toast.error(data.error);
-            } 
-           
+            } else {
+                toast.success("Event created successfully!");
+            }
         } catch (error) {
             console.error(error);
             toast.error("Something went wrong");
@@ -47,7 +55,6 @@ const useEvent = () => {
             toast.error("All fields are required");
             return false;
         }
-        // Additional validation can be added if needed
         return true;
     };
 
