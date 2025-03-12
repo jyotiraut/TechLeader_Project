@@ -45,34 +45,39 @@ function VolunteerDetails() {
         throw new Error("Token not found");
       }
 
-      const response = await fetch(`http://localhost:3000/api/v1/volunteers/${volunteerId}/${action}`, {
+      const status = action === "accept" ? "accepted" : "declined";
+
+      const response = await fetch(`http://localhost:3000/api/v1/volunteers/${volunteerId}/status`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ eventId }),
+        body: JSON.stringify({ status }),
       });
 
       if (!response.ok) {
-        throw new Error(`Failed to ${action} volunteer`);
+        throw new Error(`Failed to update status to ${status}`);
       }
 
+      // Update UI after status change
       const updatedEvents = events.map((event) => {
         if (event.eventId === eventId) {
           return {
             ...event,
-            volunteers: event.volunteers.filter((vol) => vol._id !== volunteerId),
+            volunteers: event.volunteers.map((vol) =>
+              vol._id === volunteerId ? { ...vol, status } : vol
+            ),
           };
         }
         return event;
       });
 
       setEvents(updatedEvents);
-      alert(`Volunteer ${action}ed successfully!`);
+      alert(`Volunteer ${status} successfully!`);
 
     } catch (error) {
-      console.error(`Error ${action}ing volunteer:`, error);
+      console.error(`Error updating volunteer status:`, error);
     }
   };
 
@@ -105,6 +110,7 @@ function VolunteerDetails() {
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Address</th>
+                            <th>Status</th>
                             <th>Actions</th>
                           </tr>
                         </thead>
@@ -116,9 +122,18 @@ function VolunteerDetails() {
                               <td>{volunteer.email || "N/A"}</td>
                               <td>{volunteer.phone || "N/A"}</td>
                               <td>{volunteer.address || "N/A"}</td>
+                              <td className={`status-${volunteer.status}`}>{volunteer.status || "Pending"}</td>
                               <td>
-                                <button className="accept-btn" onClick={() => handleVolunteerAction(volunteer._id, event.eventId, "accept")}>Accept</button>
-                                <button className="decline-btn" onClick={() => handleVolunteerAction(volunteer._id, event.eventId, "decline")}>Decline</button>
+                                {volunteer.status !== "accepted" && (
+                                  <button className="accept-btn" onClick={() => handleVolunteerAction(volunteer._id, event.eventId, "accept")}>
+                                    Accept
+                                  </button>
+                                )}
+                                {volunteer.status !== "declined" && (
+                                  <button className="decline-btn" onClick={() => handleVolunteerAction(volunteer._id, event.eventId, "decline")}>
+                                    Decline
+                                  </button>
+                                )}
                               </td>
                             </tr>
                           ))}

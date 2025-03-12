@@ -26,7 +26,13 @@ const volunteerSchema = mongoose.Schema({
     },
     eventId :{ type: mongoose.Schema.Types.ObjectId,
         ref: 'Event',
-        required: true } 
+        required: true } ,
+
+    status: {
+        type: String,
+        enum: ["pending", "accepted", "declined"],
+        default: "pending" },
+   
    
 }, { timestamps: true });
 

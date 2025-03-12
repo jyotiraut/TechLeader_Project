@@ -1,97 +1,68 @@
-import Volunteer from '../models/volunteerModels.js';
-import mongoose from 'mongoose';
-import Event from '../models/eventModels.js';
+import Volunteer from "../models/volunteerModels.js";
+import mongoose from "mongoose";
+import Event from "../models/eventModels.js";
+import nodemailer from "nodemailer";
+import User from "../models/userModels.js"; // Assuming the user model exists
 
 
-// const saveVolunteerData = async (req, res) => {
-//     try {
-//         // Extract eventId from the URL parameters
-//         const eventId = new mongoose.Types.ObjectId(req.params.eventId);
-
-//         // Extract data from request body
-//         const { firstName, lastName, email, phone, address } = req.body;
-
-//         // Ensure eventId is provided
-//         if (!eventId) {
-//             return res.status(400).json({ message: "Event ID is required" });
-//         }
-
-//         // Create a new Volunteer instance with the eventId
-//         const newVolunteer = new Volunteer({
-//             firstName,
-//             lastName,
-//             email,
-//             phone,
-//             address,
-//             eventId  // Store eventId in the database
-//         });
-
-//         // Save the volunteer data to the database
-//         const savedVolunteer = await newVolunteer.save();
-
-//         res.status(201).json(savedVolunteer);
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// };
 const saveVolunteerData = async (req, res) => {
     try {
-        // Validate eventId
         const { eventId } = req.params;
+
         if (!mongoose.Types.ObjectId.isValid(eventId)) {
             return res.status(400).json({ message: "Invalid Event ID" });
         }
-        const objectId = new mongoose.Types.ObjectId(eventId);
 
-        // Extract data from request body
-        const { firstName, lastName, email, phone, address } = req.body;
+        const { firstName, lastName, email, phone, address, status } = req.body;
 
-        // Ensure required fields are present
         if (!firstName || !lastName || !email || !phone || !address) {
             return res.status(400).json({ message: "All fields are required" });
         }
 
-        console.log("Received Data:", req.body); // Debugging log
+        console.log("Received Volunteer Data:", req.body); // Debugging log
 
-        // Create a new Volunteer instance
         const newVolunteer = new Volunteer({
             firstName,
             lastName,
             email,
             phone,
             address,
-            eventId: objectId, // Store eventId as an ObjectId in the database
+            eventId: new mongoose.Types.ObjectId(eventId),
+            status,
         });
 
-        // Save to database
         const savedVolunteer = await newVolunteer.save();
-        res.status(201).json(savedVolunteer);
+        console.log(" Volunteer Data Saved:", savedVolunteer);
 
+        // If status is "accepted", fetch organizer email and send email
+      
+
+        res.status(201).json({ message: "Volunteer saved successfully", volunteer: savedVolunteer });
     } catch (error) {
-        console.error("Error saving volunteer:", error);
+        console.error("Error in saveVolunteerData:", error);
         res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 };
 
+
+
+
 const getVolunteersByEvent = async (req, res) => {
     try {
-        const userId = req.user.id; // Extract logged-in user ID from JWT
-
-        // Fetch all events created by the user
+        const userId = req.user.id;
         const events = await Event.find({ userId: userId });
 
         if (!events || events.length === 0) {
             return res.status(404).json({ message: "No events found for this user." });
         }
 
-        // Fetch volunteers for each event
         const eventWithVolunteers = await Promise.all(
             events.map(async (event) => {
                 const volunteers = await Volunteer.find({ eventId: event._id });
                 return {
-                    eventName: event.title, // Assuming 'title' is the correct field for event name
+                    eventName: event.title,
                     eventId: event._id,
-                    volunteers
+                    volunteers,
                 };
             })
         );
@@ -103,11 +74,6 @@ const getVolunteersByEvent = async (req, res) => {
     }
 };
 
-
-
-
-
-
 const getVolunteers = async (req, res) => {
     try {
         const volunteers = await Volunteer.find({});
@@ -117,4 +83,82 @@ const getVolunteers = async (req, res) => {
     }
 };
 
-export { saveVolunteerData,getVolunteers,getVolunteersByEvent};
+
+const updateVolunteerStatus = async (req, res) => {
+    try {
+        const { volunteerId } = req.params;
+        const { status } = req.body;
+
+        if (!["accepted", "declined"].includes(status)) {
+            return res.status(400).json({ message: "Invalid status value" });
+        }
+
+        // Update volunteer status
+        const volunteer = await Volunteer.findByIdAndUpdate(volunteerId, { status }, { new: true });
+
+        if (!volunteer) {
+            return res.status(404).json({ message: "Volunteer not found" });
+        }
+
+        // If status is "accepted", send email
+        if (status === "accepted") {
+            const event = await Event.findById(volunteer.eventId);
+            if (!event) {
+                return res.status(404).json({ message: "Event not found" });
+            }
+
+            const eventOrganizer = await User.findById(event.userId);
+            if (!eventOrganizer) {
+                return res.status(404).json({ message: "Event organizer not found" });
+            }
+
+            // Set up Nodemailer transporter
+            const transporter = nodemailer.createTransport({
+                service: "gmail",
+                auth: {
+                    user: eventOrganizer.email, // Use environment variable for security
+                    pass: "gnuc fxam eeyn gmtn"
+                    , // Use App Password for Gmail
+                },
+            });
+
+            // Email details
+            const mailOptions = {
+                from: eventOrganizer.email,
+                to: volunteer.email,
+                subject: "Volunteer Application Accepted",
+                text: `Dear ${volunteer.firstName},
+
+Congratulations! You have been accepted as a volunteer for the event "${event.title}".
+
+Event Details:
+📍 Location: ${event.location}
+📅 Date: ${event.date}
+
+Best Regards,
+${eventOrganizer.name}
+(Event Organizer)`,
+            };
+
+            // Send email
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.error("Error sending email:", error);
+                } else {
+                    console.log("Email sent:", info.response);
+                }
+            });
+        }
+
+        res.status(200).json({ message: `Volunteer ${status} successfully`, volunteer });
+    } catch (error) {
+        console.error("Error updating volunteer status:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+
+
+export { saveVolunteerData, getVolunteers, getVolunteersByEvent, updateVolunteerStatus };
+
+
