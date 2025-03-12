@@ -117,7 +117,7 @@ const updateVolunteerStatus = async (req, res) => {
                 service: "gmail",
                 auth: {
                     user: eventOrganizer.email, // Use environment variable for security
-                    pass: "gnuc fxam eeyn gmtn"
+                    pass: process.env.EMAIL_PAS
                     , // Use App Password for Gmail
                 },
             });
