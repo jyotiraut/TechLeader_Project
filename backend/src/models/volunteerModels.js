@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { type } from "os";
 
 const volunteerSchema = mongoose.Schema({
     firstName: {
@@ -23,6 +24,9 @@ const volunteerSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    eventId :{ type: mongoose.Schema.Types.ObjectId,
+        ref: 'Event',
+        required: true } 
    
 }, { timestamps: true });
 

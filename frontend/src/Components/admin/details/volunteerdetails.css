@@ -29,3 +29,29 @@
 .volunteer-details tbody tr:hover {
   background-color: #ddd;
 }
+.accept-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-right: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.accept-btn:hover {
+  background-color: #218838;
+}
+
+.decline-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.decline-btn:hover {
+  background-color: #c82333;
+}

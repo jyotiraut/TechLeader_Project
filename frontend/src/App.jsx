@@ -40,11 +40,13 @@ const App = () => {
           <Route path="/indrayani_history" element={<Indrayani_History />} />
           <Route path="/kanyamandir_history" element={<KanyaMandir_History />} />
           <Route path="/thahity_history" element={<Thahity_History />} />
-          <Route path="/volunteer" element={<VolunteerForm />} />
+          <Route path="/volunteer/:eventId" element={<VolunteerForm />} />
+
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/event-details" element={<Eventdetails />} />
           <Route path="/volunteer-details" element={<VolunteerDetails />} />
-          <Route path="/sidebar" element={<Sidebar/>} />
+
+         <Route path="/sidebar" element={<Sidebar/>} />
           
         </Routes>
          

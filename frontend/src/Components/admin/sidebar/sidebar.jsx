@@ -5,6 +5,7 @@ import { BiUser } from 'react-icons/bi';
 import './Sidebar.css';
 import { useAuthContext } from '../../context/authContext';
 import useLogout from "../../hooks/useLogout";
+import { useParams } from 'react-router-dom';
 
 const Sidebar = () => {
   const { authUser } = useAuthContext();
@@ -33,9 +34,10 @@ const Sidebar = () => {
           <span>Events</span>
         </Link>
         <Link to="/volunteer-details" className="menu-item">
-          <FaUsers />
-          <span>Volunteers</span>
-        </Link>
+        <FaUsers />
+       <span>Volunteers</span>
+      </Link>
+
         <div className="menu-item" onClick={handleLogout}>
           <FaSignOutAlt />
           <span>Logout</span>
